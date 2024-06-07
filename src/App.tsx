@@ -6,8 +6,8 @@ import { menuItems } from "./data/db";
 import useOrder from "./hooks/useOrder";
 
 function App() {
-  const { order, tip, setTip, addItem, removeItem } = useOrder();
-  console.log("sdsd");
+  const { order, tip, setTip, addItem, removeItem, placeOrder } = useOrder();
+
   return (
     <>
       <header className=" bg-teal-400 py-10">
@@ -25,10 +25,16 @@ function App() {
         </div>
 
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
-          <OrderContents order={order} removeItem={removeItem} />
+          {order.length > 0 ? (
+            <>
+              <OrderContents order={order} removeItem={removeItem} />
 
-          <TipCalculator setTip={setTip} />
-          <OrderTotal order={order} tip={tip} />
+              <TipCalculator setTip={setTip} tip={tip} />
+              <OrderTotal order={order} tip={tip} placeOrder={placeOrder} />
+            </>
+          ) : (
+            <p className="text-center">Empty Order</p>
+          )}
         </div>
       </main>
     </>
