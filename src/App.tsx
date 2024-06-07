@@ -4,10 +4,10 @@ import { menuItems } from "./data/db";
 import useOrder from "./hooks/useOrder";
 
 function App() {
-  const { order, addItem } = useOrder();
+  const { order, addItem, removeItem } = useOrder();
   return (
     <>
-      <header className=" bg-teal-400 py-5">
+      <header className=" bg-teal-400 py-10">
         <h1 className="text-center text-4xl font-black">Tips Calculator</h1>
       </header>
 
@@ -22,7 +22,7 @@ function App() {
         </div>
 
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
-          <OrderContents order={order} />
+          <OrderContents order={order} removeItem={removeItem} />
         </div>
       </main>
     </>
