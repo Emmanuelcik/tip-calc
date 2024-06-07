@@ -7,6 +7,7 @@ import useOrder from "./hooks/useOrder";
 
 function App() {
   const { order, tip, setTip, addItem, removeItem } = useOrder();
+  console.log("sdsd");
   return (
     <>
       <header className=" bg-teal-400 py-10">
