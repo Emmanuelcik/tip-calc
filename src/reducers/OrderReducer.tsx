@@ -50,7 +50,7 @@ export const orderReducer = (
   }
   if (action.type === "remove-item") {
     const order = state.order.filter(
-      (item) => item.id === action.payload.itemId
+      (item) => item.id !== action.payload.itemId
     );
     return {
       ...state,
@@ -61,11 +61,13 @@ export const orderReducer = (
     return {
       ...state,
       order: [],
+      tip: 0,
     };
   }
   if (action.type === "add-tip") {
     return {
       ...state,
+      tip: action.payload.ammount,
     };
   }
 };
